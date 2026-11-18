@@ -55,8 +55,16 @@ chatbot = graph.compile(checkpointer=checkpoint)
 
 
 def run_streamlit_app():
-    st.set_page_config(page_title="Ollama Chat", page_icon="💬")
-    st.title("Ollama Chat")
+    st.set_page_config(page_title="AI Book", page_icon="💬")
+    st.title("AI Book")
+
+    with st.sidebar:
+        st.markdown("### Chats")
+        if st.button("➕ New chat", use_container_width=True):
+            st.session_state.thread_id = uuid.uuid4().hex
+            st.session_state.chat_history = []
+            st.query_params["thread_id"] = st.session_state.thread_id
+            st.rerun()
 
     if "thread_id" not in st.session_state:
         thread_id = st.query_params.get("thread_id")
