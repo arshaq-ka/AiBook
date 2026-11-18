@@ -81,7 +81,7 @@ def select_prompt(prompt: str) -> None:
 
 def run_streamlit_app():
     st.set_page_config(
-        page_title="AI Book",
+        page_title="EON Chat",
         page_icon="💬",
         initial_sidebar_state="expanded",
     )
@@ -94,7 +94,7 @@ def run_streamlit_app():
         st.session_state.thread_id = thread_id
 
     with st.sidebar:
-        st.markdown("## AI Book")
+        st.markdown("## EON Chat")
         st.markdown("### Chat history")
         if st.button("➕ New chat", use_container_width=True):
             st.session_state.thread_id = uuid.uuid4().hex
